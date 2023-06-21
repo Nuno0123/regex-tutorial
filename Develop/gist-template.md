@@ -77,17 +77,51 @@ Here are the character classes used in the regex:
 
 ### Flags
 
+We don't have any flags in the regex, but flags are optional settings that can be added after closing of a regex to modify it's behavoir. Common flags used in regexes include: 'i', 'g', 'm'.
+
 ### Grouping and Capturing
+
+Grouping '()' is used to create logical units within the regex. It allows you to apply quantfiers, alternation, and other operations to characters. We have three instances of grouping and capturing in our regex:
+
+- '([a-z0-9_\.-]+)': this is the first one and it catpures the username part of the email address.
+- '([\da-z\.-]+)': the second one captures the domain name part of the email address.
+- '([a-z\.]{2,6})': and the third one captures the top-level domain part of the email address.
 
 ### Bracket Expressions
 
+Bracket expressions allow us to indicate a certain set of characters that can match a particular postition in the input of a string. We have three bracket expressions used in our regex:
+
+- '[a-z0-9_\.-]': matches a single character that can be a lowercase letter, a digit, an underscore, a dot, or a dash. 
+  It allows for  wide range of valid characters for the username and domain name parts of the email.
+- '[\da-z\.-]': matches a single character that can be a digit, a lowercase letter, a dot or a dash.
+  The '\d' reporesents any digit. It is used in the domain name part of the email address.
+- '[a-z\.]': matches a single lowercase letter or a dot. It is used ton the top-level domain part of the email address.
+
 ### Greedy and Lazy Match
 
+Greedy matching means that the quantifiers will match as much as possible, while still allowing the overall pattern to match. It'll make sure that the capturing groups capture the longest posible substring that still allows the overall pattern to match. 
+
+Lazy matching is an alternative matching behavior where a quantifier matches as few characters as possible while still allowing the overll pattern to match.
+
+By default, quantifiers in regexes are greedy, however, by adding a '?' after a quantifi9er, you can make it lazy and change its behavior.
+
 ### Boundaries
+The boundaries of a regex ensure that the pattern mathces hte entire email address and doesn't allow any extra characters or invalid format bevore or after it.
+There are two boundaries in the regex:
+
+- '^' this is the start of a line anchor. It asserts that the match must start at the beginning of a line.
+- '$' this is the end of line anchor. It assertes that the match must occur at the end of a line.
 
 ### Back-references
 
+Back-references are indicated by the use of '\' followed by a number or a name corresponding to the capturing group.
+They allow you to match a previously captured substring withing the same regex.
+We don't currently have a back-reference in our regex.
+
 ### Look-ahead and Look-behind
+
+Look-ahead and Look-behind are zero-width assertions in regex that allow for a match of the pattern only if it is followed by or preceded by another pattern,
+without including the matched content in the overall match. 
 
 ## Author
 [Nestor Montanez](https://github.com/Nuno0123)
